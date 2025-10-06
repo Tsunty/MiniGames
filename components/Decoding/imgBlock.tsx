@@ -46,7 +46,7 @@ export default function ImageBlock({ isSelect, gameProps }: BlockProps): JSX.Ele
           {isSelect == "EDIT" ? (
             <input type="file" accept="image/*" onChange={handleImageUpload} />
           ) : (
-            <img className="w-full object-cover" alt="gameImg" src={game_props.img} />
+            game_props.img? <img className="w-full object-cover" alt="gameImg" src={game_props.img} /> : ''
           )}
         </div>
         <div className="mt-3 text-center text-xl">{text_help}</div>

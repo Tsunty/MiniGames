@@ -43,8 +43,6 @@ export default function CodeBlock({
 
   const [userCode, setUserCode] = useState<string>("");
   const inputsRef = useRef<HTMLInputElement[]>([]);
-  console.log(inputsRef);
-  
   const input_cells: ReactElement[] = game_props.secret_code
     .split("")
     .map((char, index) => {
