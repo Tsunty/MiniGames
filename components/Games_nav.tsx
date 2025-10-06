@@ -1,24 +1,28 @@
-import { useEffect, useState, Dispatch, SetStateAction  } from "react";
-import PixelColoring from "./PixelColoring/PixelColoring";
+import { useEffect, useState, Dispatch, SetStateAction } from "react";
+import PixelColoring_game from "./PixelColoring/PixelColoring";
 import { JSX } from "react";
-import Decoding from "./Decoding/Decoding";
-
+import Decoding_game from "./Decoding/DecodingGame";
 
 type NavigatorProps = {
   setGame: (game: JSX.Element) => void;
   StateSelectDE: [string, Dispatch<SetStateAction<string>>];
 };
-export function Navigator_games({ setGame, StateSelectDE }: NavigatorProps) {
+export function Navigator_games({
+  setGame,
+  StateSelectDE,
+}: NavigatorProps): JSX.Element {
   const games: { number: number; component: JSX.Element }[] = [
-    { number: 1, component: <PixelColoring isSelect={StateSelectDE[0]}/> },
-    { number: 2, component: <></> },
-    // { number: 3, component: <Decoding StateSelectDE={StateSelectDE}/> },
+    {
+      number: 1,
+      component: <PixelColoring_game isSelect={StateSelectDE[0]} />,
+    },
+    // { number: 2, component: <></> },
+    { number: 3, component: <Decoding_game isSelect={StateSelectDE[0]} /> },
   ];
-  const [selectedBTN, setSelectedBTN] = useState(0);
+  const [selectedBTN, setSelectedBTN] = useState<number>(1);
   useEffect(() => {
     setGame(games[selectedBTN].component);
   }, [StateSelectDE[0]]);
-
 
   return (
     <div className=" w-1/12 h-4/5 flex items-center flex-col gap-3">
@@ -45,7 +49,7 @@ type Nav_BTN_props = {
   isSelected: boolean;
 };
 
-function Nav_BTN({ number, onClick, isSelected }: Nav_BTN_props) {
+function Nav_BTN({ number, onClick, isSelected }: Nav_BTN_props): JSX.Element {
   return (
     <div
       onClick={onClick}

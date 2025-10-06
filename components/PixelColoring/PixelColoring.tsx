@@ -1,13 +1,13 @@
 "use client";
 import { useState, JSX } from "react";
 import Table_game_coloring from "./tableColoring";
-import Game_palette from "./pallet";
+import Game_palette from "./palletColoring";
 ///////////////////////////////////////////////////////////////
 
 type PixelColoring_props = {
   isSelect: string;
 };
-export default function PixelColoring({
+export default function PixelColoring_game({
   isSelect,
 }: PixelColoring_props): JSX.Element {
   return (
@@ -18,7 +18,7 @@ export default function PixelColoring({
 }
 
 //////////////////////////// TABLE DEMO ///////////////////////////////////
-function Demo_game() {
+function Demo_game(): JSX.Element {
   const [colorPick, setcolorPick] = useState<string>("");
 
   const localdata = localStorage.getItem("game1_props");
@@ -49,6 +49,7 @@ function Demo_game() {
         />
       </div>
       <button
+        type="button"
         className="bg-green-500 w-1/4 h-15 
                       rounded-2xl shadow-2xl cursor-pointer"
         onClick={() => {
@@ -62,7 +63,7 @@ function Demo_game() {
 }
 
 //////////////////////////// TABLE EDIT ///////////////////////////////////
-function Edit_game() {
+function Edit_game(): JSX.Element {
   const [colorPick, setcolorPick] = useState<string>("");
 
   const [GridColor, setGridColor] = useState<string[][]>(

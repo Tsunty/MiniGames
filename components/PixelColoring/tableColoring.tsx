@@ -1,4 +1,4 @@
-import { Dispatch, ReactElement, SetStateAction, useState } from "react";
+import { Dispatch, ReactElement, SetStateAction, useState, JSX } from "react";
 
 type game_props = {
   title: string;
@@ -13,7 +13,7 @@ export default function Table_game_coloring({
   canChange,
   GridColors,
   isEdit,
-}: game_props) {
+}: game_props): JSX.Element {
   const [Tcolored, setTcolored] = GridColors;
   const [titleEdit, setTitleEdit] = useState("");
   const input_title: ReactElement = (
@@ -26,10 +26,13 @@ export default function Table_game_coloring({
       }}
     />
   );
-  const saveHandler = () => {
+  const saveHandler = (): void => {
     ///////////////// Fetch here) //////////////////
-    localStorage.setItem('game1_props', JSON.stringify({ titleEdit, Tcolored }))
-  }
+    localStorage.setItem(
+      "game1_props",
+      JSON.stringify({ titleEdit, Tcolored })
+    );
+  };
 
   return (
     <div className="flex flex-col gap-3">
@@ -62,7 +65,8 @@ export default function Table_game_coloring({
       </table>
       {isEdit ? (
         <button
-          onClick={() => saveHandler() }
+          type="button"
+          onClick={() => saveHandler()}
           className="bg-green-500 w-full h-15 
                     rounded-2xl shadow-2xl cursor-pointer"
         >
@@ -90,7 +94,7 @@ function Table_row({
   setTC,
   colorPick,
   canChange,
-}: Row_props) {
+}: Row_props): JSX.Element {
   return (
     <tr className="border border-black">
       <th
